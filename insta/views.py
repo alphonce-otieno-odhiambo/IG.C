@@ -9,4 +9,4 @@ from .models import Post
 class PostListView(ListView):
     template_name = "home.html"
     QuerySet = Post.objects.all()
-    context_object_name = 'post'
+    context_object_name = 'posts'

@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+
+{% block title %} {% endblock%}
+
+
+{% block content %} 
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {% for post in posts %}
+            <p> {{ post.author}}</p>
+            <p>{{ post.caption}}</p>
+            <p>{{ post.date_created}}</p>
+            {% endfor %}
+        </div>
+        <div class="col-md-8"></div>
+    </div>
+</div>
+
+{% endblock%}
