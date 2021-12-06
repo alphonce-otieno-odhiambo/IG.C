@@ -10,3 +10,13 @@ class Post(models.Model):
 
     def __str__(self):
         return self.caption
+
+class Comment(models.Model):
+    comment = models.TextField(max_length=300)
+    date_created = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        self.comment
+
+    def save(self):
+        self.save()
