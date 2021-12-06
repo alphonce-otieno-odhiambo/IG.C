@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{% block title %} {% endblock%}
+
+{% block content %} 
+
+<div class="container-sm">100% wide until small breakpoint
+<div class="row">
+    <div class="col-sm-12">
+        {% for com in form %}
+        <p style="text-align: center;" >{{com.comment}}</p>
+        {% endfor %}
+    </div>
+</div>
+
+</div>
+{% endblock%}
