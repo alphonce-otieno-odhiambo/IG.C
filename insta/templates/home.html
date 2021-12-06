@@ -17,7 +17,7 @@
                 <img src="{{ post.image.url}}" class="card-img-top" alt="...">
                 <div>
                     <a href=""><i class="far fa-heart"></i></a>
-                    <a href=""><i class="far fa-comment"></i></a>
+                    <a href="{% url 'comment'%} "><i class="far fa-comment"></i></a>
                     <a href=""><i class="far fa-share-square"></i></a>
                     <a href=""><i class="fal fa-bookmark"></i></a>
                 </div>
@@ -33,6 +33,19 @@
                   
                 </div>
                 {% endfor %}
+              </div>
+              <hr>
+
+              <br>
+              <div>
+                  {% for coments in commenting.commets.all %}
+                  <div class="content">
+                      <p>
+                          <strong>{{comments.comment}} </strong>
+                          <strong>{{comments.date_created}} </strong>
+                      </p>
+                  </div>
+                  {% endfor %}
               </div>
         </div>
         <div class="col-md-6">

@@ -7,9 +7,20 @@
 <div class="container-sm">100% wide until small breakpoint
 <div class="row">
     <div class="col-sm-12">
-        {% for com in form %}
-        <p style="text-align: center;" >{{com.comment}}</p>
-        {% endfor %}
+
+        <form action="." method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="field">
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+            </div>
+        </form>
+        {% if obj%}
+            
+                        <h3>comment created:   {{obj.comment}}</h3>
+                        
+                    {% endif %}
+                    
     </div>
 </div>
 

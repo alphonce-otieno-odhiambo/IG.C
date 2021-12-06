@@ -12,11 +12,17 @@ class Post(models.Model):
         return self.caption
 
 class Comment(models.Model):
+    comtt = models.ForeignKey('Post', null=True, related_name='comments', on_delete=models.CASCADE)
     comment = models.TextField(max_length=300)
     date_created = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        self.comment
+        return self.comment
 
-    def save(self):
-        self.save()
+    #def save(self):
+        #self.save()
+class UserDetail(models.Model):
+    f_name = models.CharField(max_length=200)
+    profile_pic = models.ImageField(blank = True, null = True , upload_to = "static/profile/")
+    bio = models.CharField(max_length=200)
+    status = models.CharField(max_length=300)
