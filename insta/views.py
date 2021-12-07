@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 # )
 from .forms import CommentForm, UserDetailForm, PostForm
 from .models import Post, Comment, UserDetail
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate, login, logout
 
 # # Create your views here.
 # class PostListView(ListView):
@@ -13,9 +15,8 @@ from .models import Post, Comment, UserDetail
 #     context_object_name = 'posts'
 
 def postview(request):
-    posts = Post.objects.all()
-    context = {"posts":posts}
-    return render (request, 'home.html', context)
+    
+    return render(request, 'home.html')
 
 def comment(request):
     if request.method == "POST":

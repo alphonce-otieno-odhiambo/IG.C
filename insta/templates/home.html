@@ -12,13 +12,13 @@
             <br>
             <div class="card " style="width: 40rem;">
                 <div class="card-body">
-                {% for post in posts%}
+                    {% for imgs in images %}
                 <div>
-                    <h3>{{post.author}}</h3>
+                    <h3>{{imgs.author}}</h3>
                     <hr> 
                     <a style="font-size:24px; width: 150px;" id="ellips" href=""><i class="fas fa-ellipsis-v"></i></a>
                 </div>  
-                <img src="{{ post.image.url}}" class="card-img-top" alt="...">
+                <!-- <img src="{{ imgs.image.url}}" class="card-img-top" alt="..."> -->
                 <div>
                     <a style="font-size:24px;" href=""><i class="far fa-heart"></i></a>
                     <a style="font-size:24px;" href="{% url 'comment'%} "><i class="far fa-comment"></i></a>
@@ -28,11 +28,11 @@
                 <div class="likes"> <a href="">1,250 likes</a></div>
                 <div class="card-body">
                     <div>
-                        <h5> <a href="">{{post.author}} </a></h5>
-                        <span><p>{{post.caption}} </p></span>
+                        <h5> <a href="">{{imgs.author}} </a></h5>
+                        <span><p>{{imgs.caption}} </p></span>
                     </div>
                   <div>
-                      <p>{{post.date_created | timesince }} ago</p>
+                      <p>{{imgs.date_created | timesince }} ago</p>
                   </div>
                   
                 </div>
