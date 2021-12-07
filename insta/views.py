@@ -59,3 +59,11 @@ def post(request):
     
 
     return render(request, 'profile/update.html', {"form":forms, "picture":picture})
+
+def register_view(request):
+    form = UserCreationForm(request.POST or None)
+    if form.is_valid():
+        form_obj = form.save()
+        return redirect('/login')
+    context ={"form":form}
+    return render(request, 'accounts/register.html', context)
