@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 # from django.views.generic import (
 #     ListView
 # )
-from .forms import CommentForm, UserDetailForm
+from .forms import CommentForm, UserDetailForm, PostForm
 from .models import Post, Comment, UserDetail
 
 # # Create your views here.
@@ -43,3 +43,18 @@ def profile(request):
     userdetails = UserDetail.objects.all()
     
     return render(request, 'profile/profile.html', {"userdetails":userdetails,"form":form}) 
+
+def post(request):
+    if request.method == "POST":
+        form =PostForm(data= request.POST, files = request.FILES)
+        if form.is_valid():
+            form.save()
+            obj = form.instance
+            return render( request,'profile/update.html', {"obj": obj})
+
+    else:
+        forms = PostForm()
+        picture = Post.objects.all()
+    
+
+    return render(request, 'profile/update.html', {"form":forms, "picture":picture})
