@@ -1,0 +1,28 @@
+{% extends 'base.html'%} 
+
+
+{% block title%} {% endblock%}
+
+
+{% block content%}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 bd-4">
+                <div class="card">
+                    <div class="card-body">
+                        {% if not request.User.is_authenticated %}
+                      <form action="" method="post">
+                          {% csrf_token%}
+                          {{ form.as_p }}
+                          <button type="submit btn btn-outline-info">Register</button>
+                      </form>
+                      <h4> Already have an accoount? <a href='/login' > login</a> </h4>
+                      {% else %}
+                      <p>You are already logged in, would you like too log ou?</p>
+                      {% endif %}
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+{% endblock%}
