@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 # from django.views.generic import (
 #     ListView
 # )
-from .forms import CommentForm
-from .models import Post, Comment
+from .forms import CommentForm, UserDetailForm
+from .models import Post, Comment, UserDetail
 
 # # Create your views here.
 # class PostListView(ListView):
@@ -30,3 +30,16 @@ def comment(request):
         picture = Comment.objects.all()
     
     return render(request, 'comment.html', {"form":forms, "comment":comment})
+
+def profile(request):
+    if request.method == "POST":
+        form = UserDetailForm(request.POST)
+        if form.is_valid():
+            form = form.save()
+            return redirect('home')
+
+    else:
+        form = UserDetailForm()
+    userdetails = UserDetail.objects.all()
+    
+    return render(request, 'profile/profile.html', {"userdetails":userdetails,"form":form}) 

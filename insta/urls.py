@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path('',views.postview, name='home'),
-    path('comment',views.comment, name='comment')
+    path('comment',views.comment, name='comment'),
+    path('profile',views.profile, name='profile')
 ]

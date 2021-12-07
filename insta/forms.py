@@ -1,13 +1,19 @@
 from django import forms
-from .models import Comment, UserDetail
+from django.forms import fields
+from .models import Comment, UserDetail, Post
 
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('comment')
+        fields = ('comment',)
 
 
 class UserDetailForm(forms.ModelForm):
     class Meta:
         model = UserDetail
-        fields = ("profile_pic","f_name","bio", "status")
+        fields = ('f_name', 'profile_pic', 'bio', 'status',)
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('author','image','caption',)

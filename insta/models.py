@@ -23,6 +23,9 @@ class Comment(models.Model):
         #self.save()
 class UserDetail(models.Model):
     f_name = models.CharField(max_length=200)
-    profile_pic = models.ImageField(blank = True, null = True , upload_to = "static/profile/")
+    profile_pic = models.ImageField(blank = True, null = True , upload_to = "media/images/")
     bio = models.CharField(max_length=200)
     status = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.f_name
