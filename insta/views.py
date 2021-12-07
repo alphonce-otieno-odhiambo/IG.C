@@ -79,3 +79,5 @@ def login_view(request):
             form = AuthenticationForm(request)
     context = {"form":form}
     return render(request, 'accounts/login.html',context)
+def logout_view(request):
+    return render(request, 'accounts/logout.html')
