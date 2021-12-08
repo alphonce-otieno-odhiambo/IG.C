@@ -93,3 +93,11 @@ def login_view(request):
     return render(request, 'accounts/login.html',context)
 def logout_view(request):
     return render(request, 'accounts/logout.html')
+
+def followercount(request):
+    return render()
+
+def index(request):
+    current_user = request.GET.get('user')
+    logged_in_user = request.user.username
+    return render(request, 'follows/index.html', {"current_user":current_user})

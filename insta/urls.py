@@ -11,4 +11,5 @@ urlpatterns = [
     path('profile',views.profile, name='profile'),
     path('post',views.post, name='post'),
     path('profile_page',views.profile_page, name='profile_page'),
+    path('followercount',views.followercount, name='followercount'),
 ]

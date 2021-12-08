@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} {% endblock%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            <center>
+                <div class="profile-user-settings">
+                    <form action="followercount" method="POST">
+                        {% csrf_token%}
+                        <input type="hidden" name="user" value="{{current_user}}" readonly/>
+                        <input type="hidden" name="follower" value="{{user.username}}" readonly/>
+                        <button type="submit" class="btn btn-outline-secondary">Follow</button>
+                    </form>
+                </div>
+            </center>
+        </div>
+    </div>
+</div>
+{% endblock%}
