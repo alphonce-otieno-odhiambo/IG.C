@@ -21,7 +21,7 @@ from decouple import config,Csv
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+
 # development
 
 DATABASES = {
@@ -31,7 +31,7 @@ DATABASES = {
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
-        'PORT': '',
+        
     }
     
 }
