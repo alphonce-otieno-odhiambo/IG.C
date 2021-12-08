@@ -1,29 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-secondary text-dark">
     <div class="container-fluid ">
         
-    <div class="text-white">
-        <a style="font-size:24px; width: 100px;" class="text-white" href="{% url 'profile'%}"><i class="fab fa-instagram"></i></a>
-        <a style="font-size:2px; width: 100px;" class="v1 text-white" href="/">|</a>
-        <a style="font-size:24px; width: 150px;" class="text-white" href="{% url 'post'%}">InstaAli</a>
-        <a style="font-size:24px" class="nav-link active text-white" aria-current="page" href="{% url 'home'%}"><i class="fas fa-home"></i></a>
-    </div>
-    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="text-white" style="display: flex;">
+            <!-- <a style="font-size:24px; width: 100px;" class="text-white" href="{% url 'post'%}"><i class="fab fa-instagram"></i></a> -->
+            <a style="font-size:2px; width: 100px;" class="v1 text-white" href="/">|</a>
+            <a style="font-size:24px; width: 150px; ;" class="text-white" href="{% url 'home'%}">InstaAli</a>
+            <a href="{% url 'post'%}"><i class="fa fa-camera-retro fa-4x text-white" aria-hidden="true" style="font-size:30px; width: 100px;"></i></a>
         
-        
-        <form class="d-flex mx-auto" style="width: 200px;">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button style="font-size:24px"><i class="fa fa-search"></i></button>
-        </form>
-    
-    
-        <div>
+            <form class="d-flex mx-auto" style="width: 200px;">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button style="font-size:24px"><i class="fa fa-search"></i></button>
+            </form>
 
-        <a style="font-size:24px; width: 100px; " href=""><i class="far fa-compass"></i></a>
+            <a style="font-size:24px;width: 100px" class="nav-link active text-white" aria-current="page" href="{% url 'home'%}"><i class="fas fa-home"></i></a>
 
-        <a style="font-size:24px; width: 100px;" href=""><i class="far fa-heart"></i></a>
-   
+            <a href="{% url 'profile'%}"><i class="far fa-user-circle text-dark width: 100px" style="font-size:30px"></i></a>
         </div>
       
     </div>
-  </nav>
+</nav>

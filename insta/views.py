@@ -7,6 +7,7 @@ from .forms import CommentForm, UserDetailForm, PostForm
 from .models import Post, Comment, UserDetail
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # # Create your views here.
 # class PostListView(ListView):
@@ -15,8 +16,10 @@ from django.contrib.auth import authenticate, login, logout
 #     context_object_name = 'posts'
 
 def postview(request):
-    
-    return render(request, 'home.html')
+    photo = Post.objects.all()
+    # adding context 
+    ctx = {'photo':photo}
+    return render(request, 'home.html', ctx)
 
 def comment(request):
     if request.method == "POST":
@@ -28,16 +31,23 @@ def comment(request):
 
     else:
         forms = CommentForm()
-        picture = Comment.objects.all()
+        comment = Comment.objects.all()
     
     return render(request, 'comment.html', {"form":forms, "comment":comment})
 
+def profile_page(request):
+    profile = UserDetail.objects.all()
+    # adding context 
+    ctx = {'photo':profile}
+    
+    return render(request, 'profile/profile_page.html', ctx)
 def profile(request):
     if request.method == "POST":
-        form = UserDetailForm(request.POST)
+        form = UserDetailForm(data=request.POST, files = request.FILES)
         if form.is_valid():
-            form = form.save()
-            return redirect('home')
+            form.save()
+            object = form.instance
+            return redirect('profile/profile.html', {"object":object})
 
     else:
         form = UserDetailForm()
@@ -64,10 +74,12 @@ def register_view(request):
     form = UserCreationForm(request.POST or None)
     if form.is_valid():
         form_obj = form.save()
-        return redirect('/login')
-    context ={"form":form}
+        return redirect('/login', {"form_obj":form_obj})
+    context ={"form":form,
+                
+    }
     return render(request, 'accounts/register.html', context)
-
+@login_required
 def login_view(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)

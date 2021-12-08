@@ -10,28 +10,27 @@
             <center>
                 <div class="card" style="width: 30rem;">
                     <div class="card-body">
-                      <form action="" method="post">
+                        <form action="" method="post">
                         {% csrf_token %}
                         {{form.as_p}}
-                        <button class="btn btn-outline-info" type="submit">Upload profile</button>
-                    </form>
+                        <a href="{% url 'profile_page' %}"><button class="btn btn-outline-info" type="submit">Upload profile</button></a>
+                        
+                        </form>
                     </div>
                 </div>
-                <br><br>
-                <div class="card" style="width: 30rem;">
+                <div class="card"style="width: 30rem;" >
                     <div class="card-body">
-                        
-                        {% for users in userdetails %}
-                        <ul>
-                            <li> {{users.f_name}}</li>
-                            <li>{{users.bio}}</li>
-                            <li>{{users.status}}</li>
-                        
-                        </ul>
+                        {% for prof in userdetails %}
+                        {% if object%}
+                        <img src="{{ object.profile_pic.url}}" alt="image" class="img-thumnail">
+                        {% else%}
+                        <p>profile pic not uploaded</p>
+                        {% endif %}
+                        <p>{{prof.f_name}} </p>
+                        <p>{{prof.bio}} </p>
+                        <p>{{prof.status}} </p>
                         {% endfor %}
-                    </div>  
-                    
-                        
+                    </div>
                 </div>
             </center>
         </div>
