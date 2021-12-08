@@ -9,12 +9,20 @@
             <br>
             <center>
                 <div class="profile-user-settings">
+                    <h1 class="profile-user-name">{{auth.user}} </h1>
                     <form action="followercount" method="POST">
                         {% csrf_token%}
-                        <input type="hidden" name="user" value="{{current_user}}" readonly/>
+                        <input type="hidden" name="user" value="{{auth.user}}" readonly/>
                         <input type="hidden" name="follower" value="{{user.username}}" readonly/>
+                        <input type="hidden" name="value" value="follow" readonly/>
                         <button type="submit" class="btn btn-outline-secondary">Follow</button>
-                    </form>
+                    </form>       
+                </div>
+                <div class="profile-stats">
+                    <ul>
+                        <li><span class="profile-stat-count">{{user_followers}} </span>followers</li>
+                        <li><span class="profile-stat-count">{{user_folowing}}</span>following</li>
+                    </ul>
                 </div>
             </center>
         </div>

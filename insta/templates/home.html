@@ -10,14 +10,15 @@
     <div class="row"><br>
         <div class="col-md-8 ">
             <br>
-            <div class="card m-" style="width: 40rem;">
-                <div class="card-body m-3">
+            
+            <div class="card ">
+                <div class="card-body ">
                     {% for pic in photo %}
                 <div>
                     <h2>{{pic.author}}</h2>
-                    <a style="font-size:24px; width: 150px;" id="ellips" href=""><i class="fas fa-ellipsis-v"></i></a>
+                    <a style="font-size:24px; width: 5px;" id="ellips" href=""><i class="fas fa-ellipsis-v"></i></a>
                 </div>  
-                <img src="{{pic.image.url}}" alt="...">
+                <img src="{{pic.image.url}}" alt="..." style="width:500px;height:500px;">
                 <div>
                     <a style="font-size:24px;" href=""><i class="far fa-heart"></i></a>
                     <a style="font-size:24px;" href="{% url 'comment'%} "><i class="far fa-comment"></i></a>
@@ -38,48 +39,9 @@
                 {% endfor %}
               </div>
               <hr>
-
-              
               </div>
+            </center>
         </div>
-        <div class="col-md-4">
-            {% for pic in userdetails %}
-                <div>
-                    <h2>{{pic.f_name}}</h2>
-                    <a style="font-size:24px; width: 150px;" id="ellips" href=""><i class="fas fa-ellipsis-v"></i></a>
-                </div>  
-                <img src="{{pic.profile_pic.url}}" alt="...">
-                <div>
-                    <a style="font-size:24px;" href=""><i class="far fa-heart"></i></a>
-                    <a style="font-size:24px;" href="{% url 'comment'%} "><i class="far fa-comment"></i></a>
-                    <a style="font-size:24px;" href=""><i class="far fa-share-square"></i></a>
-                    <a style="font-size:24px;" id="bookmark" href=""><i class="fal fa-bookmark"></i></a>
-                </div>
-                <div class="likes"> <a href="">1,250 likes</a></div>
-                <div class="card-body">
-                    <div>
-                        <h5> <a href="">{{pic.bio}} </a></h5>
-                        <span><p>{{pic.status}} </p></span>
-                    </div>
-                  <div>
-                      <!-- <p>{{pic.date_created | timesince }} ago</p> -->
-                  </div>
-                  
-                </div>
-                {% endfor %}
-        </div>
-        <!-- <div class="card" style="width: 30rem;">
-            <div class="card-body">
-                {% for users in userdetails %}
-                <ul>
-                    <li> {{users.f_name}}</li>
-                    <li>{{users.bio}}</li>
-                    <li>{{users.status}}</li>
-                </ul>
-                {% endfor %}
-            </div>          
-        </div> -->
-        
     </div>
 </div>
 {% endblock%}

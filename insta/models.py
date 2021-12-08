@@ -8,6 +8,7 @@ class Post(models.Model):
     image = CloudinaryField('image')
     caption = models.CharField(max_length=200)
     date_created = models.DateTimeField(default=timezone.now)
+    
 
     class Meta:
         ordering = ['-pk']
@@ -18,6 +19,8 @@ class Comment(models.Model):
     comtt = models.ForeignKey('Post', null=True, related_name='comments', on_delete=models.CASCADE)
     comment = models.TextField(max_length=300)
     date_created = models.DateTimeField(default=timezone.now)
+    followers = models.ManyToManyField(Post, blank=True, related_name='followers')
+
 
     def __str__(self):
         return self.comment
@@ -29,6 +32,7 @@ class UserDetail(models.Model):
     profile_pic = CloudinaryField('image')
     bio = models.CharField(max_length=200)
     status = models.CharField(max_length=300)
+    
 
     def __str__(self):
         return self.f_name

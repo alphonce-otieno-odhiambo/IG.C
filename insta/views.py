@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 #     ListView
 # )
 from .forms import CommentForm, UserDetailForm, PostForm
-from .models import Post, Comment, UserDetail
+from .models import Post, Comment, UserDetail, FollowersCount
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -36,10 +36,9 @@ def comment(request):
     return render(request, 'comment.html', {"form":forms, "comment":comment})
 
 def profile_page(request):
-    profile = UserDetail.objects.all()
+    profile_det = UserDetail.objects.all()
     # adding context 
-    ctx = {'photo':profile}
-    
+    ctx = {'photo':profile_det}
     return render(request, 'profile/profile_page.html', ctx)
 def profile(request):
     if request.method == "POST":
@@ -95,9 +94,24 @@ def logout_view(request):
     return render(request, 'accounts/logout.html')
 
 def followercount(request):
-    return render()
+    if request.method =="POST":
+        value = request.POST['value']
+        user = request.POST['user']
+        follower = request.POST['follower']
+        if value == "follow":
+            follower_cnt = FollowersCount.objects.create(follower = follower, user = user)
+            follower_cnt.save()
+            return redirect('/?user='+user)
+    return render(request, 'follows/index.html',)
+    
 
 def index(request):
     current_user = request.GET.get('user')
     logged_in_user = request.user.username
-    return render(request, 'follows/index.html', {"current_user":current_user})
+    user_follower = len(FollowersCount.objects.filter(user = current_user))
+    user_following = len(FollowersCount.objects.filter(follower = current_user))
+    return render(request, 'follows/index.html', {
+        "current_user":current_user,
+        "user_follower":user_follower,
+        "user_following":user_following
+    })
