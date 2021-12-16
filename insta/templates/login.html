@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title%} {% endblock%}
+
+{% block content %}
+    <div class="container" id="register">
+        <div class="row">
+            <div class="card">
+                
+                
+                <div class="card-body" style="width: 150px;">
+                    <a href=""><img src="" alt=""></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <form action="login" method="post">
+                        {% csrf_token%}
+                        {{ login_form.as_p}}
+                        <a href="{% url 'home'%}"><button class="btn btn-outline-success" type="submit">LOGIN</button></a>
+                    </form>
+                    <div>
+                        <h5>You dont have an account please
+                            <a href="{% url 'register'%}">REGISTER</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+{% endblock %}

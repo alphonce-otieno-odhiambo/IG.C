@@ -72,24 +72,25 @@ def post(request):
 def register_view(request):
     form = UserCreationForm(request.POST or None)
     if form.is_valid():
-        form_obj = form.save()
-        return redirect('/login', {"form_obj":form_obj})
-    context ={"form":form,
-                
-    }
-    return render(request, 'accounts/register.html', context)
-@login_required
-def login_view(request):
-    if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid:
-            user = form.get_user()
+        form.save()
+        return redirect('login',{})
+    context ={"form":form}
+    return render(request, 'register.html', context)
+
+
+def login_user(request):
+    if request.method =="POST":
+        login_form = AuthenticationForm(request, data = request.POST)
+        if login_form.is_valid():
+            user = login_form.get_user()
             login(request, user)
-            return redirect('home')
+            user.save()
+            return redirect('index.html')
     else:
-            form = AuthenticationForm(request)
-    context = {"form":form}
-    return render(request, 'accounts/login.html',context)
+        login_form = AuthenticationForm(request)
+    context = {"login_form":login_form}
+    return render(request, 'login.html', context)
+
 def logout_view(request):
     return render(request, 'accounts/logout.html')
 
