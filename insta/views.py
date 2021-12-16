@@ -85,7 +85,7 @@ def login_user(request):
             user = login_form.get_user()
             login(request, user)
             user.save()
-            return redirect('index.html')
+            return redirect('home')
     else:
         login_form = AuthenticationForm(request)
     context = {"login_form":login_form}
