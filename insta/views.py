@@ -69,33 +69,9 @@ def post(request):
 
     return render(request, 'profile/update.html', {"form":forms, "picture":picture})
 
-def register_view(request):
-    form = UserCreationForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('home',{})
-
-    else:
-        form = UserCreationForm()
-    context ={"form":form}
-    return render(request, 'register.html', context)
 
 
-def login_user(request):
-    if request.method =="POST":
-        login_form = AuthenticationForm(request, data = request.POST)
-        if login_form.is_valid():
-            user = login_form.get_user()
-            login(request, user)
-            user.save()
-            return redirect('home')
-    else:
-        login_form = AuthenticationForm(request)
-    context = {"login_form":login_form}
-    return render(request, 'login.html', context)
 
-def logout_view(request):
-    return render(request, 'accounts/logout.html')
 
 def followercount(request):
     if request.method =="POST":

@@ -67,7 +67,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'insta',
-    'cloudinary'
+    'cloudinary',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -167,3 +168,4 @@ django_heroku.settings(locals())
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL = '/'
