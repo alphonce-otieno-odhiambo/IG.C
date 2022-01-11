@@ -74,6 +74,9 @@ def register_view(request):
     if form.is_valid():
         form.save()
         return redirect('login',{})
+
+    else:
+        form = UserCreationForm()
     context ={"form":form}
     return render(request, 'register.html', context)
 
@@ -85,7 +88,7 @@ def login_user(request):
             user = login_form.get_user()
             login(request, user)
             user.save()
-            return redirect('home')
+            return redirect('/')
     else:
         login_form = AuthenticationForm(request)
     context = {"login_form":login_form}
